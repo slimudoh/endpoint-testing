@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API testing</title>
+  </head>
+  <body>
+    <script>
+      let endpoint =
+        "https://dev.moneypal.ng/zimvest.leaderboard/api/Users/validatepasswordresetToken?ResetToken=1db56e26242e04c6da50155ebb92a39da&ResetDomain=rp";
+
+      function FetchAPI() {
+        fetch(endpoint)
+          .then((response) => {
+            response.json();
+            console.log(
+              "success response from using fetch======================================"
+            );
+            console.log(response);
+            console.log(
+              "======================================================"
+            );
+          })
+          .catch((error) => {
+            console.log(
+              "error response from using fetch======================================"
+            );
+            console.log(error);
+            console.log(
+              "======================================================"
+            );
+          });
+      }
+
+      function xhrAPI() {
+        var xmlhttp;
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            console.log(
+              "success response from using fetch======================================"
+            );
+            console.log(this.responseText);
+            console.log(
+              "======================================================"
+            );
+          } else {
+            console.log(this.responseText);
+            console.log(
+              "error response from using XHR======================================"
+            );
+            console.log("error");
+            console.log(
+              "======================================================"
+            );
+          }
+        };
+        xmlhttp.open("GET", endpoint, true);
+        xmlhttp.send();
+      }
+
+      function init() {
+        FetchAPI();
+        xhrAPI();
+      }
+      init();
+    </script>
+  </body>
+</html>
